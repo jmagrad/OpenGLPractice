@@ -35,6 +35,6 @@ public:
 	void    SetMatrix4(const char *name, const glm::mat4 &matrix, bool useShader = false);
 
 };
-#define Shader_H
+#define Shader_h
 #endif
 
