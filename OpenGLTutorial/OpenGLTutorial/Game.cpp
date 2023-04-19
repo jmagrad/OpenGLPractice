@@ -33,7 +33,7 @@ void Game::Init()
 	Renderer = new SpriteRenderer(shader);
 	// load textures
 	ResourceManager::LoadTexture("background.png", false, "background");
-	ResourceManager::LoadTexture("awesomeface.png", true, "face");
+	ResourceManager::LoadTexture("moon4.png", true, "face");
 	ResourceManager::LoadTexture("block.png", false, "block");
 	ResourceManager::LoadTexture("block_solid.png", false, "block_solid");
 	ResourceManager::LoadTexture("paddle.png", true, "paddle");
