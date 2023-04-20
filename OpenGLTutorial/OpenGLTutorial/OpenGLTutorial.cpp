@@ -94,6 +94,7 @@ int main(int argc, char *argv[])
 
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode)
 {
+	
 	// when a user presses the escape key, we set the WindowShouldClose property to true, closing the application
 	if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
 		glfwSetWindowShouldClose(window, true);
@@ -108,13 +109,16 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 
 void mouse_button_callback(GLFWwindow* window, int button, int action, int mods)
 {
-	if (button == GLFW_MOUSE_BUTTON_RIGHT && action == GLFW_PRESS)
+	double xMousePos, yMousePos;
+	if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_PRESS)
 	{
-		if (action == GLFW_PRESS)
-			Breakout.Keys[key] = true;
-		else if (action == GLFW_RELEASE)
-			Breakout.Keys[key] = false;
+		Breakout.mouseClick = true;
+		glfwGetCursorPos(window, &xMousePos, &yMousePos);
+		Breakout.xMousePos = xMousePos;
+		Breakout.yMousePos = yMousePos;
 	}
+	else if (button == GLFW_MOUSE_BUTTON_LEFT && action == GLFW_RELEASE)
+		Breakout.mouseClick = false;
 }
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)

@@ -32,7 +32,7 @@ const glm::vec2 PLAYER_SIZE(100.0f, 20.0f);
 const float PLAYER_VELOCITY(500.0f);
 
 // Initial velocity of the Ball
-const glm::vec2 INITIAL_BALL_VELOCITY(100.0f, -350.0f);
+const glm::vec2 INITIAL_BALL_VELOCITY(0.0f, -500.0f);
 // Radius of the ball object
 const float BALL_RADIUS = 12.5f;
 
@@ -46,11 +46,13 @@ public:
 	// game state
 	GameState               State;
 	bool                    Keys[1024];
+	bool mouseClick;
 	unsigned int            Width, Height;
 	std::vector<GameLevel>  Levels;
 	unsigned int            Level;
 	// Get mouse position
 	int xMousePos, yMousePos;
+	glm::vec2 LAUNCH_VELOCITY;
 
 	// constructor/destructor
 	Game(unsigned int width, unsigned int height);
@@ -67,6 +69,9 @@ public:
 	// reset
 	void ResetLevel();
 	void ResetPlayer();
+
+private:
+	glm::vec2 LaunchCoordinates(const double& x, const double& y);
 };
 #define GAME_H
 #endif

@@ -35,7 +35,7 @@ void Game::Init()
 	ResourceManager::LoadTexture("background.png", false, "background");
 	ResourceManager::LoadTexture("moon4.png", true, "face");
 	ResourceManager::LoadTexture("block.png", false, "block");
-	ResourceManager::LoadTexture("block_solid.png", false, "block_solid");
+	ResourceManager::LoadTexture("rock.png", true, "block_solid");
 	ResourceManager::LoadTexture("paddle.png", true, "paddle");
 	// load levels
 	GameLevel one; one.Load("levels/one.lvl", this->Width, this->Height * (.8));
@@ -100,9 +100,9 @@ void Game::ProcessInput(float dt)
 					ball->Position.x += velocity;
 			}
 		}
-		if (this->Keys[GLFW_KEY_SPACE])
+		if (this->mouseClick)
 		{
-			//glfwGetMousePos(&xMousePos, &yMousePos);
+			ball->Velocity = glm::vec2((xMousePos-Player->Position.x), (yMousePos - Player->Position.y));
 			ball->Stuck = false;
 		}
 	}
@@ -240,4 +240,3 @@ Direction VectorDirection(glm::vec2 target)
 	}
 	return (Direction)best_match;
 }
-
