@@ -49,6 +49,9 @@ public:
 	unsigned int            Width, Height;
 	std::vector<GameLevel>  Levels;
 	unsigned int            Level;
+	// Get mouse position
+	int xMousePos, yMousePos;
+
 	// constructor/destructor
 	Game(unsigned int width, unsigned int height);
 	~Game();
