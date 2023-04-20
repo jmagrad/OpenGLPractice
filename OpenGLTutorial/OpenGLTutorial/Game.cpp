@@ -38,7 +38,7 @@ void Game::Init()
 	ResourceManager::LoadTexture("block_solid.png", false, "block_solid");
 	ResourceManager::LoadTexture("paddle.png", true, "paddle");
 	// load levels
-	GameLevel one; one.Load("levels/one.lvl", this->Width, this->Height / 2);
+	GameLevel one; one.Load("levels/one.lvl", this->Width, this->Height * (.8));
 	GameLevel two; two.Load("levels/two.lvl", this->Width, this->Height / 2);
 	GameLevel three; three.Load("levels/three.lvl", this->Width, this->Height / 2);
 	GameLevel four; four.Load("levels/four.lvl", this->Width, this->Height / 2);
@@ -101,7 +101,10 @@ void Game::ProcessInput(float dt)
 			}
 		}
 		if (this->Keys[GLFW_KEY_SPACE])
+		{
+			//glfwGetMousePos(&xMousePos, &yMousePos);
 			ball->Stuck = false;
+		}
 	}
 }
 
@@ -121,14 +124,7 @@ void Game::Render()
 
 void Game::ResetLevel()
 {
-	if (this->Level == 0)
-		this->Levels[0].Load("levels/one.lvl", this->Width, this->Height / 2);
-	else if (this->Level == 1)
-		this->Levels[1].Load("levels/two.lvl", this->Width, this->Height / 2);
-	else if (this->Level == 2)
-		this->Levels[2].Load("levels/three.lvl", this->Width, this->Height / 2);
-	else if (this->Level == 3)
-		this->Levels[3].Load("levels/four.lvl", this->Width, this->Height / 2);
+	this->Levels[0].Load("levels/one.lvl", this->Width, this->Height*(.8));
 }
 
 void Game::ResetPlayer()
